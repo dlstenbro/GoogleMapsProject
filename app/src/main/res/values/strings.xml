@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RNGTravel</string>
+    <string name="current_location">Current Location</string>
+</resources>
