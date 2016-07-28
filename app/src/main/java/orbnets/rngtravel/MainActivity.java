@@ -4,10 +4,14 @@ package orbnets.rngtravel;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+
+// libraries for spinners
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,21 +26,26 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback,AdapterView.OnItemSelectedListener {
 
     protected GoogleMap mGmap;
-    protected int mapType = 1;
+    protected int mapType = 1; // set default for the map = NORMAL
     Spinner drop_down;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
 
+            Ensure a fragment is created for the spinner to attach to. Then have the OnItemSelectedListener wait for input
+
+ */
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(this);              // display a map on the given Activity Fragment.
 
-        generateSpinner();
-        drop_down.setOnItemSelectedListener(this);
+        generateSpinner();                      // place the spinner on the fragment view.
+        drop_down.setOnItemSelectedListener(this);      // wait for the user to hit spinner drop down.
 
     }
 
+    // OnMapReady comes with the google API. When a selection is made via spinner, then update OnMapReady
     public void onMapReady(GoogleMap googleMap) {
 
         googleMap.setMapType(mapType);
@@ -56,10 +65,16 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         drop_down.setAdapter(adapter);
     }
 
+    /*
+        MethodName: CreateMap
+        Parameters: Map, mapType
+        Use: A pass function for "OnMapReady". Createmap will receive the mapType and current map, then
+            pass those values to "OnMapReady".
+    */
     private void createMap(GoogleMap map, int mapType){
 
         try {
-            if (map == null) {
+            if (map == null) {      // by default, the GoogleMap object will be null, meaning the map hasn't been created yet.
 
                 MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
                 mapFragment.getMapAsync(this);
