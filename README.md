@@ -13,5 +13,6 @@ Goal: To get experience with Android and how to use the Google Maps API
 
 # Possible projects with the GoogleMaps API
 
-1. Display terrain by soft to dark colors. When a user switches map types, provide a "thermal-like" layout for different elevations.
-  where soft colors are below sea level (blue hints) and dark colors will be extreme elevations (redish hint)
+1. Heat Map to display terrain by soft to dark colors. When a user switches map types, provide a "thermal-like" layout for different elevations. Soft colors are below sea level (blue hints) and dark colors will be extreme elevations (redish hint). The implementation would use a "heat map" where the datapoints are the points in elevation provided by some source. Heat map implementation demo with Google maps: https://developers.google.com/maps/documentation/android-api/utility/heatmap
+
+
