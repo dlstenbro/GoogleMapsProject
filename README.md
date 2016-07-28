@@ -1,8 +1,9 @@
 # GoogleMapsProject
 Mobile application using Google Maps
 
-Summary: This is a small project to explore the Google Maps API through Android. 
-Goal: To get experience with Android and how to use the Google Maps API
+* Summary: This is a small project to explore the Google Maps API through Android.
+
+* Goal: To get experience with Android and how to use the Google Maps API
 
 # Features 
 
