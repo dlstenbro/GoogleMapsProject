@@ -7,8 +7,9 @@ Mobile application using Google Maps
 
 # Features 
 
-1. Display a simple Google map in an android environment - done 
-1. Add functionality to switch between map types  - done
+1. Display a simple Google map in an android environment 
+1. Add functionality to switch between map types
+1. "Add Marker" button allows the user to allow multiple markers
 
 
 
