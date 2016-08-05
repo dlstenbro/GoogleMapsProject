@@ -1,5 +1,6 @@
 package orbnets.rngtravel;
 
+import android.graphics.Color;
 import android.location.Location;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -35,6 +36,11 @@ import com.google.android.gms.maps.model.LatLng;
 
 // Marker Libraries
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+// drawing libraries
+
 
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback,AdapterView.OnItemSelectedListener, GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
@@ -137,6 +143,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(mapType);
         //googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("Marker"));
         googleMap.setMyLocationEnabled(true);
+        addLine(googleMap);
 
     }
 
@@ -185,6 +192,12 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         initiateClient();
         map.addMarker(new MarkerOptions().position(new LatLng(mCurrentLat,mCurrentLong)).draggable(true));
         Toast.makeText(MainActivity.this, "Added Marker at current location", Toast.LENGTH_SHORT).show();
+
+    }
+    private void addLine(GoogleMap map){
+        // example provided by https://developers.google.com/maps/documentation/android-api/shapes
+        Polyline newLine = map.addPolyline(new PolylineOptions().add(new LatLng(51.5, -0.1), new LatLng(40.7, -74.0))
+                .width(5).color(Color.RED));
 
     }
 
