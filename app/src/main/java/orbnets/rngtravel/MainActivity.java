@@ -140,10 +140,22 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         generateButton(googleMap);
+
         googleMap.setMapType(mapType);
         //googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("Marker"));
         googleMap.setMyLocationEnabled(true);
-        addLine(googleMap);
+
+        // Listen for long presses on the map activity.
+        addMarkerLongClickListener(googleMap);
+    }
+
+    public void addMarkerLongClickListener(final GoogleMap map){
+        map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                map.addMarker(new MarkerOptions().position(latLng).draggable(true));
+            }
+        });
 
     }
 
@@ -194,7 +206,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         Toast.makeText(MainActivity.this, "Added Marker at current location", Toast.LENGTH_SHORT).show();
 
     }
-    private void addLine(GoogleMap map){
+    private void addLine(GoogleMap map, LatLng Latitude, LatLng Longitude){
         // example provided by https://developers.google.com/maps/documentation/android-api/shapes
         Polyline newLine = map.addPolyline(new PolylineOptions().add(new LatLng(51.5, -0.1), new LatLng(40.7, -74.0))
                 .width(5).color(Color.RED));
@@ -287,6 +299,5 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         public void onNothingSelected(AdapterView<?> parent) {
         // if nothing selected then do nothing
     }
-
 
 }
